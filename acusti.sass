@@ -1,0 +1,261 @@
+/*!
+ * This document has been created for Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+ * Please leave this notice in place, along with any additional credits below.
+ * ---------------------------------------------------------------
+ * Title: acusti
+ * Author: Andrew Patton @acusti <http://www.acusti.ca>
+ * Description: Applying the style of acusti.ca to reading marked documents
+ */
+
+// Import core compass framework http://compass-style.org/reference/compass/
+@import "compass"
+// Import and apply global reset
+@import "compass/reset"
+// Import vertical rhythm http://compass-style.org/reference/compass/typography/vertical_rhythm/
+@import "compass/typography/vertical_rhythm"
+// Import mixins for CSS3 User Interface module http://compass-style.org/reference/compass/css3/user_interface/
+@import "compass/css3/user-interface"
+
+
+// ====================
+// Variables
+// ====================
+
+// General defaults
+$default-text-shadow-color: black
+$default-text-shadow-h-offset: 0px
+$default-text-shadow-v-offset: 1px
+$inline-block-alignment: top
+// At the cost of causing some disruptions to vertical rhythm, make sure line-heights do not vary too wildly
+$round-to-nearest-half-line: true
+// Set the browser usage thresholds to 1 in 2
+$graceful-usage-threshold: 50
+$critical-usage-threshold: 50
+// Vertical rhythm
+$base-font-size: 18px
+$base-line-height: 27px
+$rhythm-unit: 'rem'
+$rem-with-px-fallback: true
+// Page element dimensions
+$header-height: 84px
+// Grid variables
+$total-width: 760px
+$total-columns: 6
+$column-width-abs: 150px
+$column-width: $column-width-abs / $total-width * 100%
+$gutter-width-abs: 20px
+$gutter-width: $gutter-width-abs / $total-width * 100%
+$grid-padding: 0
+// Breakpoints
+$max-width: $total-width
+$medium-width: 630px
+$narrow-width: 500px
+// Typography
+$body-text-family: Volkhov, Georgia, serif
+$header-text-family: $body-text-family
+$mono-family: Menlo, "Andale Mono", "DejaVu Sans Mono", Consolas, monospace
+$base-block-elements: "h5, p, ul, ol, dl"
+// Colors
+$color-accent: rgb(251, 144, 8)
+$color-bkcg: rgb(41, 41, 41)
+$color-text: rgb(255, 255, 255)
+$color-accent-dark: rgb(133, 54, 0)
+
+
+// ====================
+// Elements
+// ====================
+
+*
+	+box-sizing(border-box)
+
+html
+	position: relative
+
+body
+	background: #2a2a2a url(http://www.acusti.ca/images/bckg-texture.png)
+	color: #eee
+
+blockquote
+	position: relative
+	padding: 0 2em
+	margin: 1em 0
+
+cite
+	margin-left: 1.9em
+	font-size: 0.8rem /* 20 x 0.8 = 16 */
+	color: #666
+
+strong
+	font-weight: bolder
+
+code
+	background-color: #1c1c1c
+	padding: 0 0.35em
+	margin: 0 0.15em
+
+pre
+	> code
+		display: block
+		margin: 15px auto
+		width: 85%
+		padding: 11px 9px 11px 12px
+
+#content code p:last-child
+	margin-bottom: 0
+
+::-moz-selection
+	color: #fff
+	background-color: rgba(128, 37, 0, 0.7)
+
+::selection
+	color: #fff
+	background-color: rgba(128, 37, 0, 0.7)
+
+a
+	&::-moz-selection,
+	&::selection
+		background-color: rgba(220, 116, 4, 0.7)
+
+
+// ====================
+// Typography
+// ====================
+
+@import url(http://fonts.googleapis.com/css?family=Volkhov:400,400italic,700,700italic)
+
+// Vertical rhythm baseline
++establish-baseline
+
+html
+	// Don't adjust font size on device orientation change in webkit
+	-webkit-text-size-adjust: 100%
+
+body
+	padding: 1em 1.5em 1.5em 1em
+	font-family: $body-text-family
+	text-rendering: optimizeLegibility
+	-webkit-font-smoothing: antialiased
+	@media (max-width: $narrow-width)
+		+adjust-font-size-to(18px)
+		header a, #top-nav-fixed a
+			+adjust-font-size-to(18px, 2.78) // 18 x 2.78 = 50
+
+h1, h2, h3
+	color: #fff
+	text-shadow: 1px 1px 1px black
+	-webkit-font-smoothing: subpixel-antialiased
+	text-align: left
+
+h1
+	font-family: $header-text-family
+	
+h1
+	+adjust-font-size-to(48px, 2)
+	+rhythm(0, 0, 0, 1, 48px)
+	text-shadow: 2px 2px 1px black
+
+h2
+	+adjust-font-size-to(28px, 1.5)
+	+rhythm(0, 0, 0, 1, 28px)
+	color: #8b8b8b
+
+h3
+	+adjust-font-size-to(23px, 1.5)
+	+rhythm(1, 0, 0, 1, 23px)
+
+a
+	text-decoration: none
+	color: $color-accent
+
+/* = BEGIN - Quotes = */
+blockquote
+	+adjust-font-size-to(17px, 1.5)
+	font-style: italic
+	text-align: left
+	span
+		font-style: italic
+		color: #999
+		display: block
+		position: absolute
+
+.open
+	font-size: 4rem
+	top: .1em
+	left: -.02em
+
+.close
+	font-size: 2.5rem
+	bottom: -.7em
+	right: .2em
+/* = END - Quotes == */
+
+// Gists / code
+
+.gist,
+pre
+	text-align: left
+	white-space: pre-wrap
+	margin-bottom: 1em
+
+code
+	font-family: $mono-family
+	text-shadow: 0 1px 1px black
+
+ins
+	text-decoration: none
+
+del
+	text-decoration: line-through
+
+/* = Content
+ *-------------------------------------------------------------- */
+
+#content
+	p
+		+rhythm(0, 0, 0, 1)
+	ul, ol
+		+rhythm(0, 0, 0, 1.5)
+		@media (max-width: $narrow-width)
+			+rhythm(0, 0, 0, 1)
+	em
+		font-style: italic
+	ol, ul
+		padding-left: 2px
+	ol
+		list-style-type: decimal
+	ul
+		list-style-type: square
+	li
+		line-height: 1.3
+		margin-bottom: 0.5em
+
+	a:hover
+		text-decoration: underline
+		text-shadow: 1px 1px 2px black
+
+	.standout,
+	& #work ul
+		li
+			+adjust-font-size-to(16px, 0.85)
+
+			> a:first-child,
+			> p > a:first-child,
+			.title
+				+rhythm(0, 0, 0.25, 0, 18px)
+				+adjust-font-size-to(18px, 0.85)
+
+			@media (max-width: $narrow-width)
+				+adjust-font-size-to(18px, 1)
+				
+				> a:first-child,
+				> p > a:first-child,
+				.title
+					+adjust-font-size-to(20px, 1)
+					+rhythm(0, 0.25, 0.25, 0, 18px)
+
+.baseline
+	+adjust-font-size-to(22px)
+	font-style: italic
+	color: #aaa
+	text-shadow: 1px 1px 1px black
