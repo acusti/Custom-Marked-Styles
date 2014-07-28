@@ -1,7 +1,7 @@
 Custom Marked Styles
 ====================
 
-My custom stylesheets for Brett Terpstra’s [Marked 2 app][marked]. You can find an explanation at the [Marked Custom Styles repository][customstylesrepo].
+My custom stylesheets for Brett Terpstra’s [Marked 2 app][marked]. You can find an explanation of what that means at the [Marked Custom Styles repository][customstylesrepo].
 
 Pesto
 -----
