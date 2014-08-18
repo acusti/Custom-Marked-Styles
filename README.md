@@ -9,7 +9,7 @@ Pesto
 Based on the [Kult custom style][kult] from [Peter Sziebig (@bigpe)][bigpe]. Goals:
 
 - Pleasing readability (via Adobe’s [Source Sans Pro typeface][sourcesans])
-- Mobile first with consideration for high-density (“retina”) scren resolutions
+- Mobile first with consideration for high-density (“retina”) screen resolutions
 - Support for a wide range of mark-up/down
 - Support for custom styles for a résumé document, including styles for the heading, `.article-list`, `.article-title`, and `.article-date` elements, and custom code to style and position the time period of a project or job via the `.projects__time-period` class
 
