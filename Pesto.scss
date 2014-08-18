@@ -139,7 +139,7 @@ body {
 	margin-right: auto;
 	max-width: $max-width;
 	display: block;
-	
+
 	@media (min-width: $small-width) {
 		padding-left: 1.75rem;
 		padding-right: 1.75rem;
@@ -203,12 +203,12 @@ a {
 	color: $color-accent;
 	text-decoration: none;
 	/* Underline via gradient background */
-	@include background-image(linear-gradient(top, rgba(0, 0, 0, 0) 50%, $color-ui-light 0%));
+	@include background-image(linear-gradient(to bottom, transparent 50%, $color-ui-light 50%));
 	background-repeat: repeat-x;
 	@include background-size(1px 1px);
 	background-position: 0 92%;
 	/* Clear descendors */
-	text-shadow: 1px 0 rgb(255, 255, 255),2px 0 rgb(255, 255, 255),-1px 0 rgb(255, 255, 255),-2px 0 rgb(255, 255, 255);
+	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
 	outline: 0 none;
 }
@@ -216,7 +216,9 @@ a {
 a:hover {
 	outline: 0 none;
 	color: darken($color-accent, 11%);
-	@include background-image(linear-gradient(top, rgba(0, 0, 0, 0) 50%, darken($color-accent, 6%) 50%));
+	@include background-image(linear-gradient(to bottom, transparent 50%, darken($color-accent, 6%) 50%));
+	/* Background image helper outpus background-size, so reset it here */
+	@include background-size(1px 1px);
 }
 
 
@@ -406,7 +408,7 @@ caption{display:table-caption;font-weight:300;font-size:1.3em;text-transform:upp
 	width: 100%;
 	font-style: italic;
 	color: $color-text-light;
-	
+
 	@media (min-width: $medium-width) {
 		float: right;
 		width: 11em;
