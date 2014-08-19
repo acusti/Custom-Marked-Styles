@@ -2,6 +2,7 @@
 
 sass_dir = "./"
 css_dir = "./"
+fonts_dir = "fonts"
 relative_assets = true
 
 # Development or production?
