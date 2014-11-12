@@ -49,19 +49,21 @@ $color-ui-light   : lighten($color-text-light, 11%);
    http://www.adobe.com/type/browser/legal/pdfs/OpenFontLicense.pdf
 */
 
-// Non-retina regular weight fonts (use 300)
-@media (-webkit-max-device-pixel-ratio: 1.49),
-       (max-resolution: 143dpi) {
-	// Body text
-	@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Light.otf.woff", "woff"), false, 300, normal);
-	// Body text italic
-	@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-LightIt.otf.woff", "woff"), false, 300, italic);
-	// Monospace
-	@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Light.otf.woff", "woff"), false, 300, normal);
-}
-// Retina regular weight fonts (use 400)
-@media (-webkit-min-device-pixel-ratio: 1.5),
-       (min-resolution: 144dpi) {
+// Body text
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Light.otf.woff", woff), false, 300, normal);
+// Body text italic
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-LightIt.otf.woff", woff), false, 300, italic);
+// Body text bold
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Bold.otf.woff", woff), false, 700, normal);
+// Body text bold italic
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-BoldIt.otf.woff", woff), false, 700, italic);
+// Monospace
+@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Light.otf.woff", woff), false, 300, normal);
+// Monospace bold
+@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Bold.otf.woff", woff), false, 700, normal);
+
+// Regular weight fonts for printing
+@media print {
 	// Body text
 	@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Regular.otf.woff", "woff"), false, 400, normal);
 	// Body text italic
@@ -69,12 +71,6 @@ $color-ui-light   : lighten($color-text-light, 11%);
 	// Monospace
 	@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Regular.otf.woff", "woff"), false, 400, normal);
 }
-// Body text bold
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Bold.otf.woff", "woff"), false, 700, normal);
-// Body text bold italic
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-BoldIt.otf.woff", "woff"), false, 700, italic);
-// Monospace
-@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Bold.otf.woff", "woff"), false, 700, normal);
 
 
 html {
