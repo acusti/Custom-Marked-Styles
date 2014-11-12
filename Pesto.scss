@@ -90,9 +90,6 @@ html {
 	// Don't adjust font size on device orientation change in webkit
 	-webkit-text-size-adjust: 100%;
 }
-html, button, input, select, textarea {
-	font-family: sans-serif;
-}
 
 html, body, button, input, select, textarea {
 	color: $color-text-body;
@@ -117,11 +114,11 @@ body:after {
 }
 
 body {
+	display: block;
 	padding: map-get($body-padding-horizontal, "base") 1.25rem;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: $max-width;
-	display: block;
 
 	@each $width, $padding in $body-padding-horizontal {
 		@media (min-width: #{$width}) {
@@ -132,16 +129,19 @@ body {
 }
 
 
-h1, h2, h3, dt {
-	color: #423F37;
+h1, h2, h3, h4, h5, dt {
 	font-weight: 700;
+	// Should links in bold headings have underlines?
+	// a {
+	// 	background-image: none;
+	// }
 }
 
 h1 {
 	font-size: 2em;
 	margin: 0.67em 0;
 }
-/* = Resume-specific styles = */
+/* BEGIN - Resume-specific styles */
 /* Heading 1 and first block of content immediately following have no margin between them */
 .resume h1 {
 	margin-bottom: 0;
@@ -150,6 +150,7 @@ h1 {
 .resume h1 + section > :first-child {
 	margin-top: 0;
 }
+/* END - Resume-specific styles */
 h2,
 .article-list .article-title {
 	font-size: 1.45em;
@@ -203,7 +204,7 @@ code, kbd, pre, samp, tt {
 	padding: 0;
 }
 pre {
-	background-color: #F8F5F0;
+	background-color: #f8f8f8;
 	font-size: 0.7rem;
 	overflow-x: auto;
 	padding: 1.3rem;
@@ -219,7 +220,7 @@ code, tt {
 	background-color: #f8f8f8;
 	border-radius: 3px;
 	font-size: 0.85em;
-	color: #423F37;
+	color: $color-text-body;
 	padding: 0 5px;
 }
 pre > code {
@@ -239,12 +240,12 @@ aside {
 
 b, strong {
 	font-weight: bold;
-	color: #423F37;
+	color: $color-text-body;
 	font-weight: 700;
 }
 
 blockquote {
-	color: #423F37;
+	color: $color-text-body;
 	font-size: 1.25em;
 	font-weight: 700;
 	margin: 1em 40px;
@@ -291,7 +292,7 @@ img {
 
 
 ol > li:before {
-	color: #423F37;
+	color: $color-text-body;
 	content: counter(ol, decimal) ".";
 	counter-increment: ol;
 	font-weight: 700;
@@ -301,7 +302,7 @@ ol > li:before {
 }
 
 ul > li:before {
-	background-color: #423F37;
+	background-color: $color-text-body;
 	border-radius: 50%;
 	content: "";
 	height: 0.3em;
