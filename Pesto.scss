@@ -80,12 +80,15 @@ $color-ui-light   : lighten($color-text-light, 11%);
 html {
 	font-size: 100%;
 	// Change font size (which will increase other relative sizes) first
-	@media (min-width: $large-width - 75px) {
+	@media screen and (min-width: $large-width - 75px) {
 		font-size: 112.5%;
 	}
 	// Change font size (which will increase other relative sizes) first
-	@media (min-width: $full-width - 75px) {
+	@media screen and (min-width: $full-width - 75px) {
 		font-size: 125%;
+	}
+	@media print {
+		font-size: 90% !important;
 	}
 	// Don't adjust font size on device orientation change in webkit
 	-webkit-text-size-adjust: 100%;
@@ -95,6 +98,10 @@ html, body, button, input, select, textarea {
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 300;
+
+	@media print {
+		font-weight: 400 !important;
+	}
 }
 
 body{
@@ -124,6 +131,13 @@ body {
 		@media (min-width: #{$width}) {
 			padding-left  : $padding;
 			padding-right : $padding;
+		}
+	}
+	@media print {
+		padding: 3rem !important;
+
+		h1:first-child {
+			margin-top: 0;
 		}
 	}
 }
