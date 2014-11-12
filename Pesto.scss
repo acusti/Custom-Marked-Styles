@@ -94,8 +94,6 @@ html, body, button, input, select, textarea {
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 300;
-	// Clear descendors from underlines (like with links)
-	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 
 	@media print {
 		font-weight: 400 !important;
@@ -187,7 +185,7 @@ h6 {
 a {
 	color: $color-accent;
 	text-decoration: none;
-	/* Underline via gradient background */
+	// Underline via gradient background
 	background-image: linear-gradient(to bottom, transparent 49%, $color-ui-light 50%);
 	background-repeat: repeat-x;
 	background-size: 1px 1px;
@@ -197,6 +195,8 @@ a {
 		background-size: 1px 2px;
 	}
 	background-position: 0 93%;
+	// Clear descendors from underline
+	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
 	outline: 0 none;
 }
