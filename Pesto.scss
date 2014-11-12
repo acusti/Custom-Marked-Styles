@@ -272,15 +272,11 @@ figure {
 
 
 hr {
-	-moz-border-bottom-colors: none;
-	-moz-border-left-colors: none;
-	-moz-border-right-colors: none;
-	-moz-border-top-colors: none;
-	border-color: -moz-use-text-color -moz-use-text-color #ECE6DA;
-	border-image: none;
-	border-style: none none solid;
-	border-width: medium medium 1px;
-	margin: 3em 6em;
+	height: 0;
+	border: 0;
+	padding-top: 1px;
+	margin: 2.5em 0;
+	background: linear-gradient(to right, rgba($color-ui-light, 0) 10%, $color-ui-light 50%, rgba($color-ui-light, 0) 90%);
 }
 
 
