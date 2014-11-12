@@ -9,6 +9,7 @@
 
 @import "compass";
 @import "compass/css3/user-interface";
+@import "compass/css3/selection";
 
 // Breakpoints
 $min-width    : 320px;
@@ -201,6 +202,11 @@ a {
 	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
 	outline: 0 none;
+	@include selection {
+		background-color: lighten($color-accent, 25%);
+		color: $color-text-body;
+		text-shadow: none;
+	}
 }
 a:hover {
 	outline: 0 none;
