@@ -93,7 +93,7 @@ html {
 
 html, body, button, input, select, textarea {
 	color: $color-text-body;
-	font-family: "Source Sans Pro", "Myriad Pro", "Myriad", sans-serif;
+	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 300;
 }
 
@@ -198,7 +198,7 @@ p, pre {
 	margin: 1em 0;
 }
 code, kbd, pre, samp, tt {
-	font-family: "Source Code Pro", monospace;
+	font-family: "Source Code Pro", Menlo, Consolas, monospace;
 	font-size: 1em;
 	margin: 0;
 	padding: 0;
