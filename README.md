@@ -1,4 +1,4 @@
-Custom Marked Styles
+Marked Custom Styles
 ====================
 
 My custom stylesheets for Brett Terpstra’s [Marked 2 app][marked]. You can find an explanation of what that means at the [Marked Custom Styles repository][customstylesrepo].
