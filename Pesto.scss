@@ -98,6 +98,8 @@ html, body, button, input, select, textarea {
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 300;
+	// Clear descendors from underlines (like with links)
+	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 
 	@media print {
 		font-weight: 400 !important;
@@ -186,25 +188,26 @@ h6 {
 	font-size: 0.75em;
 	margin: 2.33em 0;
 }
-/* Link underline from http://practice.typekit.com/ */
 a {
 	color: $color-accent;
 	text-decoration: none;
 	/* Underline via gradient background */
-	background-image: linear-gradient(to bottom, transparent 50%, $color-ui-light 50%);
+	background-image: linear-gradient(to bottom, transparent 49%, $color-ui-light 50%);
 	background-repeat: repeat-x;
 	background-size: 1px 1px;
-	background-position: 0 92%;
-	/* Clear descendors */
-	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
+	// For non-retina screens in Safari, gradient background needs 2 pixels of height to show any underline
+	@media (-webkit-max-device-pixel-ratio: 1.49),
+       (max-resolution: 143dpi) {
+		background-size: 1px 2px;
+	}
+	background-position: 0 93%;
 	cursor: pointer;
 	outline: 0 none;
 }
-
 a:hover {
 	outline: 0 none;
 	color: darken($color-accent, 11%);
-	background-image: linear-gradient(to bottom, transparent 50%, darken($color-accent, 6%) 50%);
+	background-image: linear-gradient(to bottom, transparent 49%, darken($color-accent, 6%) 50%);
 }
 
 
