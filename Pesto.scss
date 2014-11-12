@@ -74,6 +74,13 @@ $color-ui-light   : lighten($color-text-light, 11%);
 
 
 html {
+	// In Marked, font-size: 100% on html corresponds to 11px; reset it here
+	font-size: 16px;
+	// Don't adjust font size on device orientation change in webkit
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
 	font-size: 100%;
 	// Change font size (which will increase other relative sizes) first
 	@media screen and (min-width: $large-width - 75px) {
@@ -86,8 +93,8 @@ html {
 	@media print {
 		font-size: 90% !important;
 	}
-	// Don't adjust font size on device orientation change in webkit
-	-webkit-text-size-adjust: 100%;
+	margin: 0 auto;
+	background-color: white;
 }
 
 html, body, button, input, select, textarea {
@@ -98,11 +105,6 @@ html, body, button, input, select, textarea {
 	@media print {
 		font-weight: 400 !important;
 	}
-}
-
-body{
-	margin: 0 auto;
-	background-color: white;
 }
 
 body, textarea {
