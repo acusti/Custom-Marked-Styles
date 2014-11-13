@@ -11,6 +11,9 @@
 @import "compass/css3/user-interface";
 @import "compass/css3/selection";
 
+// Syntax highlighting (https://github.com/aahan/pygments-github-style)
+@import "pesto-syntax";
+
 // Breakpoints
 $min-width    : 320px;
 $max-width    : 950px;
