@@ -160,7 +160,7 @@ a {
 	background-size: 1px 1px;
 	// For non-retina screens in Safari, gradient background needs 2 pixels of height to show any underline
 	@media (-webkit-max-device-pixel-ratio: 1.49),
-       (max-resolution: 143dpi) {
+	       (max-resolution: 143dpi) {
 		background-size: 1px 2px;
 	}
 	background-position: 0 93%;
