@@ -289,17 +289,39 @@ ul > li:before {
 	background-color: $color-text-body;
 	border-radius: 50%;
 	content: "";
-	height: 0.3em;
-	width: 0.3em;
-	margin-right: 0.5em;
-	margin-top: 0.6em;
+	height: 4px;
+	width: 4px;
+	margin-right: 0.4rem;
+	margin-top: 0.6rem;
 	position: absolute;
 	right: 100%;
+	@media (min-width: $medium-width) {
+		margin-right: 0.6rem;
+	}
+	@media (min-width: $medium-fontsize-width) {
+		height: 5px;
+		width: 5px;
+	}
+	@media (min-width: $large-fontsize-width) {
+		height: 6px;
+		width: 6px;
+	}
 }
 
 ol, ul, dl {
-	margin-left: 2rem;
+	margin-left: 0;
 	padding: 0;
+
+	ol, ul, dl {
+		margin-left: 1.25rem;
+	}
+	@media (min-width: $medium-width) {
+		&,
+		ol, ul, dl {
+			margin-left: 1.5rem;
+		}
+
+	}
 }
 ol {
 	counter-reset: ol;
