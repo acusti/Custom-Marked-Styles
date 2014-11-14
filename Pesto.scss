@@ -135,6 +135,10 @@ body {
 			padding-right : $padding;
 		}
 	}
+	@media (min-width: $medium-width) {
+		padding-top    : 2rem;
+		padding-bottom : 2rem;
+	}
 	@media print {
 		padding: 3rem !important;
 
@@ -156,6 +160,9 @@ h1, h2, h3, h4, h5, dt {
 h1 {
 	font-size: 2em;
 	margin: 0.67em 0;
+}
+article > h1:first-child {
+	margin-top: 0;
 }
 /* BEGIN - Resume-specific styles */
 /* Heading 1 and first block of content immediately following have no margin between them */
