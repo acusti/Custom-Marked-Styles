@@ -168,6 +168,7 @@ a {
 	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
 	outline: 0 none;
+	// Style selected links (or else text-shadow makes it look crazy ugly)
 	@include selection {
 		background-color: lighten($color-accent, 25%);
 		color: $color-text-body;
