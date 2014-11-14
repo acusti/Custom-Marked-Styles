@@ -1,0 +1,25 @@
+// ============
+// Font Embeds
+// ============
+
+/*!
+   Fonts used are Adobe's Source Sans Pro and Source Code Pro, which are:
+   Copyright 2010, Adobe Systems, Inc. (http://www.adobe.com/)
+   Licensed under the SIL Open Font License, Version 1.1:
+   http://www.adobe.com/type/browser/legal/pdfs/OpenFontLicense.pdf
+*/
+
+// Body text
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Light.woff", woff), false, 300, normal);
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Regular.woff", woff), false, 400, normal);
+// Body text italic
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-LightIt.woff", woff), false, 300, italic);
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-It.woff", woff), false, 400, italic);
+// Body text bold
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Bold.woff", woff), false, 700, normal);
+// Body text bold italic
+@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-BoldIt.woff", woff), false, 700, italic);
+// Monospace
+@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Regular.woff", woff), false, 400, normal);
+// Monospace bold
+@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Bold.woff", woff), false, 700, normal);

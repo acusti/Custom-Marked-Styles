@@ -14,6 +14,9 @@
 // Syntax highlighting (https://github.com/aahan/pygments-github-style)
 @import "pesto-syntax";
 
+// Web fonts
+@import "pesto-fonts";
+
 // Breakpoints
 $min-width    : 320px;
 $max-width    : 950px;
@@ -46,40 +49,6 @@ $color-ui-light   : lighten($color-text-light, 11%);
 // Box sizing
 *, *:before, *:after {
 	@include box-sizing(border-box);
-}
-
-// ============
-// Font Embeds
-// ============
-
-/*!
-   Fonts used are Adobe's Source Sans Pro and Source Code Pro, which are:
-   Copyright © 2010, Adobe Systems, Inc. (http://www.adobe.com/)
-   Licensed under the SIL Open Font License, Version 1.1:
-   http://www.adobe.com/type/browser/legal/pdfs/OpenFontLicense.pdf
-*/
-
-// Body text
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Light.otf.woff", woff), false, 300, normal);
-// Body text italic
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-LightIt.otf.woff", woff), false, 300, italic);
-// Body text bold
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Bold.otf.woff", woff), false, 700, normal);
-// Body text bold italic
-@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-BoldIt.otf.woff", woff), false, 700, italic);
-// Monospace
-@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Light.otf.woff", woff), false, 300, normal);
-// Monospace bold
-@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Bold.otf.woff", woff), false, 700, normal);
-
-// Regular weight fonts for printing
-@media print {
-	// Body text
-	@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-Regular.otf.woff", "woff"), false, 400, normal);
-	// Body text italic
-	@include font-face("Source Sans Pro", inline-font-files("SourceSansPro-It.otf.woff", "woff"), false, 400, italic);
-	// Monospace
-	@include font-face("Source Code Pro", inline-font-files("SourceCodePro-Regular.otf.woff", "woff"), false, 400, normal);
 }
 
 
