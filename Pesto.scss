@@ -21,6 +21,9 @@ $small-width  : $min-width + ($max-width - $min-width) * 0.2;
 $medium-width : $min-width + ($max-width - $min-width) * 0.4;
 $large-width  : $medium-width + ($max-width - $medium-width) * 0.6;
 $full-width   : $large-width + ($max-width - $large-width) * 0.8;
+// Font step breakpoints
+$medium-fontsize-width : $large-width - 75px;
+$large-fontsize-width  : $full-width - 75px;
 
 // Structure
 $body-padding-horizontal : (
@@ -36,6 +39,9 @@ $color-accent     : rgb(141, 179, 89);
 $color-text-body  : rgb(87, 83, 74);
 $color-text-light : rgb(184, 186, 188);
 $color-ui-light   : lighten($color-text-light, 11%);
+
+// Font sizing
+@import "pesto-font-sizing";
 
 // Box sizing
 *, *:before, *:after {
@@ -77,38 +83,19 @@ $color-ui-light   : lighten($color-text-light, 11%);
 }
 
 
-html {
-	// In Marked, font-size: 100% on html corresponds to 11px; reset it here
-	font-size: 16px;
-	// Don't adjust font size on device orientation change in webkit
-	-webkit-text-size-adjust: 100%;
-}
-
-body {
-	font-size: 100%;
-	// Change font size (which will increase other relative sizes) first
-	@media screen and (min-width: $large-width - 75px) {
-		font-size: 112.5%;
-	}
-	// Change font size (which will increase other relative sizes) first
-	@media screen and (min-width: $full-width - 75px) {
-		font-size: 125%;
-	}
-	@media print {
-		font-size: 90% !important;
-	}
-	margin: 0 auto;
-	background-color: white;
-}
-
 html, body, button, input, select, textarea {
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
-	font-weight: 300;
-
-	@media print {
-		font-weight: 400 !important;
+	font-weight: 400;
+	// Use light weight for medium font size and up (screen only)
+	@media screen and (min-width: $medium-fontsize-width) {
+		font-weight: 300;
 	}
+}
+
+body {
+	margin: 0 auto;
+	background-color: white;
 }
 
 body, textarea {

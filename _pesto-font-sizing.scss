@@ -1,0 +1,25 @@
+html {
+	// In Marked, font-size: 100% on html corresponds to 11px; reset it here
+	font-size: 16px;
+	// Don't adjust font size on device orientation change in webkit
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+    // 16px * 106.25% = 17px
+    font-size: 106.25%;
+    // Change font size (which will increase other relative sizes) first
+    @media screen and (min-width: $medium-fontsize-width) {
+        // 16px * 112.5% = 18px
+        font-size: 112.5%;
+    }
+    // Change font size (which will increase other relative sizes) first
+    @media screen and (min-width: $large-fontsize-width) {
+        // 16px * 125% = 20px
+        font-size: 125%;
+    }
+    @media print {
+        // 16px * 93.75% = 15px
+        font-size: 93.75% !important;
+    }
+}
