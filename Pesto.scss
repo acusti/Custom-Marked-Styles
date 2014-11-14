@@ -385,6 +385,9 @@ caption{display:table-caption;font-weight:300;font-size:1.3em;text-transform:upp
 
 /* == Custom classes == */
 
+.nobr {
+	white-space: nowrap;
+}
 .article-date {
 	color: #C7C2B8;
 	display: block;
