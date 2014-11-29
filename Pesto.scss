@@ -155,7 +155,7 @@ a {
 	color: $color-accent;
 	text-decoration: none;
 	// Underline via gradient background
-	background-image: linear-gradient(to bottom, transparent 49%, $color-ui-light 50%);
+	background-image: linear-gradient(to bottom, transparent 49%, $color-accent 50%);
 	background-repeat: repeat-x;
 	background-size: 1px 1px;
 	// For non-retina screens in Safari, gradient background needs 2 pixels of height to show any underline
@@ -163,7 +163,7 @@ a {
 	       (max-resolution: 143dpi) {
 		background-size: 1px 2px;
 	}
-	background-position: 0 93%;
+	background-position: 0 90%;
 	// Clear descendors from underline
 	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
@@ -174,13 +174,17 @@ a {
 		color: $color-text-body;
 		text-shadow: none;
 	}
+	&:hover {
+		color: darken($color-accent, 11%);
+		background-image: linear-gradient(to bottom, transparent 49%, darken($color-accent, 6%) 50%);
+	}
 }
-a:hover {
-	outline: 0 none;
-	color: darken($color-accent, 11%);
-	background-image: linear-gradient(to bottom, transparent 49%, darken($color-accent, 6%) 50%);
+h1, h2, h3, h4, h5, dt, strong, b {
+	a {
+		background-size: 1px 2px;
+		background-position: 0 91%;
+	}
 }
-
 
 p, pre {
 	margin: 1em 0;
