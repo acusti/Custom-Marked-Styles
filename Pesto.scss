@@ -56,7 +56,7 @@ html, body, button, input, select, textarea {
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	// Use light weight for medium font size and up (screen only)
+	// Use light weight for medium width and up (screen only)
 	@media screen and (min-width: $medium-fontsize-width) {
 		font-weight: 300;
 	}
@@ -164,15 +164,18 @@ a {
 		background-size: 1px 2px;
 	}
 	background-position: 0 90%;
-	// Clear descendors from underline
+	// Clear descenders from underline
 	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
 	cursor: pointer;
 	outline: 0 none;
 	// Style selected links (or else text-shadow makes it look crazy ugly)
-	@include selection {
-		background-color: lighten($color-accent, 25%);
-		color: $color-text-body;
-		text-shadow: none;
+	&,
+	& > * {
+		@include selection {
+			background-color: lighten($color-accent, 25%);
+			color: $color-text-body;
+			text-shadow: none;
+		}
 	}
 	&:hover {
 		color: darken($color-accent, 11%);
