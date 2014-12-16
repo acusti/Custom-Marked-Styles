@@ -7,6 +7,7 @@
    Description: Attention to typography, easy on the eyes, mobile first, retina-ready
 */
 
+// Compass
 @import "compass";
 @import "compass/css3/user-interface";
 @import "compass/css3/selection";
@@ -46,13 +47,9 @@ $color-ui-light   : lighten($color-text-light, 11%);
 // Font sizing
 @import "pesto-font-sizing";
 
-// Box sizing
-*, *:before, *:after {
-	@include box-sizing(border-box);
-}
-
-
-html, body, button, input, select, textarea {
+// Set up defaults
+html {
+	box-sizing: border-box;
 	color: $color-text-body;
 	font-family: "Source Sans Pro", "Myriad Set Pro", "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
 	font-weight: 400;
@@ -61,29 +58,18 @@ html, body, button, input, select, textarea {
 		font-weight: 300;
 	}
 }
+// Let box-sizing inherit from HTML
+*, *:before, *:after {
+	box-sizing: inherit;
+}
 
+// Layout
 body {
 	margin: 0 auto;
 	background-color: white;
-}
-
-body, textarea {
 	line-height: 1.4;
-}
-
-
-body:after {
-	clear: both;
-	content: "";
-	display: table;
-}
-
-body {
-	display: block;
-	padding: map-get($body-padding-horizontal, "base") 1.25rem;
-	margin-left: auto;
-	margin-right: auto;
 	max-width: $max-width;
+	padding: map-get($body-padding-horizontal, "base") 1.25rem;
 
 	@each $width, $padding in $body-padding-horizontal {
 		@media (min-width: #{$width}) {
@@ -265,7 +251,6 @@ figure {
 	}
 }
 
-
 hr {
 	height: 0;
 	border: 0;
@@ -274,13 +259,11 @@ hr {
 	background: linear-gradient(to right, rgba($color-ui-light, 0) 10%, $color-ui-light 50%, rgba($color-ui-light, 0) 90%);
 }
 
-
 img {
 	max-width: 100%;
 	display: block;
 	border: 0 none;
 }
-
 
 ol > li:before {
 	color: $color-text-body;
@@ -291,7 +274,6 @@ ol > li:before {
 	position: absolute;
 	right: 100%;
 }
-
 ul > li:before {
 	background-color: $color-text-body;
 	border-radius: 50%;
