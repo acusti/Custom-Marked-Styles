@@ -137,41 +137,48 @@ h6 {
 	font-size: 0.75em;
 	margin: 2.33em 0;
 }
+// Custom link underline
+// ---------------------
 a {
 	color: $color-accent;
 	text-decoration: none;
 	// Underline via gradient background
-	background-image: linear-gradient(to bottom, transparent 49%, $color-accent 50%);
+	background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
 	background-repeat: repeat-x;
 	background-size: 1px 1px;
-	// For non-retina screens in Safari, gradient background needs 2 pixels of height to show any underline
-	@media (-webkit-max-device-pixel-ratio: 1.49),
-	       (max-resolution: 143dpi) {
-		background-size: 1px 2px;
+	background-position: 0 95%;
+	// Tweak position + thickness for high res (1.75x and up) displays
+	@media (-webkit-min-device-pixel-ratio: 1.75),
+	       (min-resolution: 168dpi) {
+		background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
+		background-position: 0 93%;
 	}
-	background-position: 0 90%;
-	// Clear descenders from underline
-	text-shadow: 1px 0 white, 2px 0 white, -1px 0 white, -2px 0 white;
-	cursor: pointer;
-	outline: 0 none;
+	// Clear descendors from underline
+	text-shadow: 3px 0 white, 2px 0 white, 1px 0 white, -1px 0 white, -2px 0 white, -3px 0 white;
+	&:hover {
+		color: darken($color-accent, 11%);
+		background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
+	}
 	// Style selected links (or else text-shadow makes it look crazy ugly)
 	&,
-	& > * {
+	> * {
 		@include selection {
 			background-color: lighten($color-accent, 25%);
 			color: $color-text-body;
 			text-shadow: none;
 		}
 	}
-	&:hover {
-		color: darken($color-accent, 11%);
-		background-image: linear-gradient(to bottom, transparent 49%, darken($color-accent, 6%) 50%);
-	}
 }
-h1, h2, h3, h4, h5, dt, strong, b {
+h1, h2, h3 {
 	a {
 		background-size: 1px 2px;
-		background-position: 0 91%;
+		@media (-webkit-min-device-pixel-ratio: 1.75),
+		       (min-resolution: 168dpi) {
+			background-position: 0 93%;
+			background-image: linear-gradient($color-accent 0%, $color-accent 100%);
+			background-size: 1px 1px;
+			background-position: 0 93%;
+		}
 	}
 }
 
