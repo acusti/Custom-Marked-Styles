@@ -7,132 +7,126 @@
  * Description: Applying the style of acusti.ca to reading marked documents
  */
 
-// Import core compass framework http://compass-style.org/reference/compass/
+// ======================
+// Compass/plugin imports
+// ======================
+
+// Core compass framework
 @import "compass"
-// Import and apply global reset
+// Apply global reset
 @import "compass/reset"
-// Import vertical rhythm http://compass-style.org/reference/compass/typography/vertical_rhythm/
+// http://compass-style.org/reference/compass/typography/vertical_rhythm/
 @import "compass/typography/vertical_rhythm"
-// Import mixins for CSS3 User Interface module http://compass-style.org/reference/compass/css3/user_interface/
+// http://compass-style.org/reference/compass/css3/user_interface/
 @import "compass/css3/user-interface"
+// http://compass-style.org/reference/compass/css3/selection/
+@import "compass/css3/selection"
+// http://compass-style.org/help/tutorials/spriting/
+@import "compass/utilities/sprites"
 
 
-// ====================
+// ======================
 // Variables
-// ====================
+// ======================
 
-// General defaults
-$default-text-shadow-color: black
-$default-text-shadow-h-offset: 0px
-$default-text-shadow-v-offset: 1px
-$inline-block-alignment: top
-// At the cost of causing some disruptions to vertical rhythm, make sure line-heights do not vary too wildly
-$round-to-nearest-half-line: true
-// Set the browser usage thresholds to 1 in 2
-$graceful-usage-threshold: 50
-$critical-usage-threshold: 50
+// Dimensions
+// ----------
 // Vertical rhythm
-$base-font-size: 18px
-$base-line-height: 27px
-$rhythm-unit: 'rem'
+$base-font-size:       20px
+$base-line-height:     28px
+$rhythm-unit:          'rem'
 $rem-with-px-fallback: true
 // Page element dimensions
-$header-height: 84px
+$header-height:        84px
+
+// Defaults
+// --------
+// General defaults
+$default-text-shadow-color:    black
+$default-text-shadow-h-offset: 0px
+$default-text-shadow-v-offset: 1px
+$inline-block-alignment:       top
+// At the cost of causing some disruptions to vertical rhythm, make sure line-heights do not vary too wildly
+$round-to-nearest-half-line:   true
+// = Browser support
+// Set the browser usage threshold for features that gracefully degrade to 1 in 4
+$graceful-usage-threshold:     25
+// Set the browser usage threshold for features that cannot degrade gracefully to 1 in 4
+$critical-usage-threshold:     25
+
+// Grid
+// ----
 // Grid variables
-$total-width: 760px
-$total-columns: 6
+$total-width:      760px
+$total-columns:    6
 $column-width-abs: 150px
-$column-width: $column-width-abs / $total-width * 100%
+$column-width:     $column-width-abs / $total-width * 100%
 $gutter-width-abs: 20px
-$gutter-width: $gutter-width-abs / $total-width * 100%
-$grid-padding: 0
+$gutter-width:     $gutter-width-abs / $total-width * 100%
+$grid-padding:     0
+
+// Colors
+// ------
+$color-accent:           rgb(251, 144, 8)
+$color-accent-alt:       rgb(255, 151, 39)
+$color-bkg:              rgb(40, 40, 40)
+$color-bkg-code:         rgb(28, 28, 28)
+$color-text:             rgb(241, 241, 241)
+$color-text-muted:       rgb(150, 150, 150)
+$color-text-disabled:    rgb(100, 100, 100)
+$color-accent-dark:      rgb(133, 54, 0)
+$color-accent-dark-alt:  rgb(187, 76, 0)
+$color-selection:        rgba(darken($color-accent-dark, 5%), 0.7)
+$color-accent-selection: rgba(darken(saturate($color-accent, 5%), 10%), 0.7)
+
+// Timings
+// -------
+$transition-duration-move:    0.25s
+$transition-duration-opacity: 0.4s
+$transition-duration-scale:   $transition-duration-move
+
 // Breakpoints
-$max-width: $total-width
+// -----------
+$max-width:    $total-width
 $medium-width: 630px
 $narrow-width: 500px
+
+
+/* =====================
+ * Styles
+ * ====================*/
+
 // Typography
-$body-text-family: Volkhov, Georgia, serif
+// ----------
+// = Variables
+// $body-text-family: bitter, Georgia, serif
+$body-text-family: volkhov, Georgia, serif
 $header-text-family: $body-text-family
+// $header-text-family: indie-flower, sans-serif
 $mono-family: Menlo, "Andale Mono", "DejaVu Sans Mono", Consolas, monospace
 $base-block-elements: "h5, p, ul, ol, dl"
-// Colors
-$color-accent: rgb(251, 144, 8)
-$color-bkcg: rgb(41, 41, 41)
-$color-text: rgb(255, 255, 255)
-$color-accent-dark: rgb(133, 54, 0)
 
+@import url("http://fonts.googleapis.com/css?family=Volkhov:400,400italic,700,700italic")
 
-// ====================
-// Elements
-// ====================
+// Placeholders
+%drop-cap
+	&::first-letter
+		float: left
+		font-size: 5.29em
+		line-height: 1
+		margin: -0.05em 0 -0.15em
+		padding: 0 0.07em 0 0
+		// Once widely supported, use initial letter
+		// initial-letter: 3
+		color: $color-accent-dark-alt
+		@media (max-width: $narrow-width)
+			initial-letter: 2
 
-*
-	+box-sizing(border-box)
-
-html
-	position: relative
-
-body
-	background: #2a2a2a url(http://www.acusti.ca/images/bckg-texture.png)
-	color: #eee
-
-blockquote
-	position: relative
-	padding: 0 2em
-	margin: 1em 0
-
-cite
-	margin-left: 1.9em
-	font-size: 0.8rem /* 20 x 0.8 = 16 */
-	color: #666
-
-strong
-	font-weight: bolder
-
-code
-	background-color: #1c1c1c
-	padding: 0 0.35em
-	margin: 0 0.15em
-
-pre
-	> code
-		display: block
-		margin: 15px auto
-		width: 85%
-		padding: 11px 9px 11px 12px
-
-#content code p:last-child
-	margin-bottom: 0
-
-::-moz-selection
-	color: #fff
-	background-color: rgba(128, 37, 0, 0.7)
-
-::selection
-	color: #fff
-	background-color: rgba(128, 37, 0, 0.7)
-
-a
-	&::-moz-selection,
-	&::selection
-		background-color: rgba(220, 116, 4, 0.7)
-
-
-// ====================
-// Typography
-// ====================
-
-@import url(http://fonts.googleapis.com/css?family=Volkhov:400,400italic,700,700italic)
 
 // Vertical rhythm baseline
 +establish-baseline
 
-html
-	// Don't adjust font size on device orientation change in webkit
-	-webkit-text-size-adjust: 100%
-
 body
-	padding: 1em 1.5em 1.5em 1em
 	font-family: $body-text-family
 	text-rendering: optimizeLegibility
 	-webkit-font-smoothing: antialiased
@@ -142,42 +136,49 @@ body
 			+adjust-font-size-to(18px, 2.78) // 18 x 2.78 = 50
 
 h1, h2, h3
-	color: #fff
+	color: $color-text
 	text-shadow: 1px 1px 1px black
 	-webkit-font-smoothing: subpixel-antialiased
 	text-align: left
 
 h1
 	font-family: $header-text-family
-	
-h1
 	+adjust-font-size-to(48px, 2)
-	+rhythm(0, 0, 0, 1, 48px)
+	+rhythm(0, 0, 0, 1)
 	text-shadow: 2px 2px 1px black
+	@media (max-width: $narrow-width)
+		+adjust-font-size-to(38px, 1.5)
 
 h2
 	+adjust-font-size-to(28px, 1.5)
-	+rhythm(0, 0, 0, 1, 28px)
-	color: #8b8b8b
+	+rhythm(0, 0, 0, 1)
+	color: $color-text-muted
 
 h3
 	+adjust-font-size-to(23px, 1.5)
-	+rhythm(1, 0, 0, 1, 23px)
+	+rhythm(1, 0, 0, 1)
 
 a
 	text-decoration: none
 	color: $color-accent
 
-/* = BEGIN - Quotes = */
+// In content div, use underline on hover
+body > div
+	a:hover
+		text-decoration: underline
+		text-shadow: 1px 1px 2px black
+
+// = BEGIN - Quotes
 blockquote
-	+adjust-font-size-to(17px, 1.5)
+	+adjust-font-size-to(17px, 1)
 	font-style: italic
+	color: $color-text-muted
 	text-align: left
 	span
-		font-style: italic
-		color: #999
-		display: block
 		position: absolute
+		display: block
+		font-style: italic
+		color: $color-text-muted
 
 .open
 	font-size: 4rem
@@ -188,7 +189,7 @@ blockquote
 	font-size: 2.5rem
 	bottom: -.7em
 	right: .2em
-/* = END - Quotes == */
+// = END - Quotes
 
 // Gists / code
 
@@ -208,54 +209,410 @@ ins
 del
 	text-decoration: line-through
 
-/* = Content
- *-------------------------------------------------------------- */
+// Content
+// -------
 
-#content
-	p
+p
+	+rhythm(0, 0, 0, 1)
+
+ul, ol
+	+rhythm(0, 0, 0, 1.5)
+	@media (max-width: $narrow-width)
 		+rhythm(0, 0, 0, 1)
-	ul, ol
-		+rhythm(0, 0, 0, 1.5)
-		@media (max-width: $narrow-width)
-			+rhythm(0, 0, 0, 1)
-	em
-		font-style: italic
-	ol, ul
-		padding-left: 2px
-	ol
-		list-style-type: decimal
-	ul
-		list-style-type: square
+em
+	font-style: italic
+ol, ul
+	padding-left: 2px
+ol
+	list-style-type: decimal
+ul
+	list-style-type: square
+li
+	line-height: inherit
+	margin-bottom: 0.5em
+
+.standout,
+#work ul
 	li
-		line-height: 1.3
-		margin-bottom: 0.5em
+		+adjust-font-size-to(16px, 0.85)
 
-	a:hover
-		text-decoration: underline
-		text-shadow: 1px 1px 2px black
+		> a:first-child,
+		> p > a:first-child,
+		.title
+			+rhythm(0, 0, 0.25, 0, 18px)
+			+adjust-font-size-to(18px, 0.85)
 
-	.standout,
-	& #work ul
-		li
-			+adjust-font-size-to(16px, 0.85)
+		@media (max-width: $narrow-width)
+			+adjust-font-size-to(18px, 1)
 
 			> a:first-child,
 			> p > a:first-child,
 			.title
-				+rhythm(0, 0, 0.25, 0, 18px)
-				+adjust-font-size-to(18px, 0.85)
-
-			@media (max-width: $narrow-width)
-				+adjust-font-size-to(18px, 1)
-				
-				> a:first-child,
-				> p > a:first-child,
-				.title
-					+adjust-font-size-to(20px, 1)
-					+rhythm(0, 0.25, 0.25, 0, 18px)
+				+adjust-font-size-to(20px, 1)
+				+rhythm(0, 0.25, 0.25, 0, 18px)
 
 .baseline
 	+adjust-font-size-to(22px)
+	+rhythm-margins(0, 0.5, 22px)
 	font-style: italic
-	color: #aaa
+	color: $color-text-muted
 	text-shadow: 1px 1px 1px black
+
+article.post,
+article.page,
+article.intro
+	> p:first-of-type
+		@extend %drop-cap
+
+/* =Mobile Safari ( iPad, iPhone and iPod Touch )
+ *-------------------------------------------------------------- */
+
+pre, code, h1, h2, h3, h4, h5, p, li, th, td, blockquote, cite, a, strong, em, span
+	-moz-text-size-adjust: 100%
+	-webkit-text-size-adjust: 100%
+	-ms-text-size-adjust: 100%
+	text-size-adjust: 100%
+
+// Links
+// -----
+.link--more
+	&:after
+		content: '\a0 ?'
+		font-size: 1.2em
+		line-height: 1
+
+.download--target
+	display: inline-block
+	border-radius: 50%
+	padding: 1em
+	background-color: $color-accent-dark
+	+transition(background-color $transition-duration-opacity)
+
+	&:hover
+		background-color: $color-accent
+
+	> img
+		display: block
+
+
+// Buttons
+// -------
+%button
+	display: inline-block
+	background: $color-accent-dark
+	color: white
+	border: none
+	font-family: $body-text-family
+	+adjust-font-size-to(18px)
+	cursor: pointer
+
+	code
+		background-color: rgba($color-bkg-code, 0.5)
+
+
+// Borders
+// -------
+%horizontal-border
+	display: block
+	height: 2px
+	width: 100%
+	+background-image(linear-gradient(darken($color-bkg, 5%), darken($color-bkg, 5%) 50%, lighten($color-bkg, 5%) 50%, lighten($color-bkg, 5%) 100%))
+	background-size: 1px 2px
+	background-repeat: repeat-x
+
+
+// Structure
+// ---------
+/* = Header
+ *-------------------------------------------------------------- */
+
+header
+	background: $color-accent
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	text-align: right
+	/* height: 2.5em; */ /* 18 x 2.5 = 45 */
+	border-bottom: 2px solid $color-accent-dark
+	-moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.7)
+	-webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.7)
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.7)
+	z-index: 10
+
+
+/* = Footer
+ *-------------------------------------------------------------- */
+
+footer
+	width: 80%
+	max-width: 600px
+	margin: 0 auto
+	font-size: 0.8rem
+	font-style: italic
+	-webkit-font-smoothing: subpixel-antialiased
+	color: $color-text-disabled
+	text-shadow: 1px 1px 1px black
+	text-align: center
+	padding: 0.3em 0 0.6em
+	clear: both
+
+	@media (max-width: $narrow-width)
+		width: 95%
+		// Reset regular max-width value
+		max-width: 100%
+
+
+/* = Main Content Area
+ *-------------------------------------------------------------- */
+
+#content
+	width: 88%
+	max-width: $max-width
+	padding: 5px 0 45px
+	margin: 42px auto 0
+	text-align: justify
+	+hyphens(auto)
+
+	@media (max-width: $narrow-width)
+		width: 95%
+		// Reset regular max-width value
+		max-width: 100%
+		text-align: left
+		margin-top: 38px
+
+#logo
+	margin-bottom: 0
+	body.page--home &
+		margin-bottom: 0.5em
+	a
+		position: absolute
+		display: block
+		overflow: hidden
+		height: 0
+		background: url(http://www.acusti.ca/images/acustica-full.png) no-repeat 0 4px
+		background-size: 300px auto
+		width: 300px
+		margin-top: 3px
+		padding-top: 70px
+
+		body.page--home &
+			position: static
+			background-position: 0 8px
+			background-size: 100% auto
+			max-width: 600px
+			width: 100%
+			padding-top: 120px
+
+			@media (max-width: 600px)
+				padding-top: 22%
+
+.post,
+.page
+	> h1:first-of-type
+		padding-top: 93px
+
+
+// Elements
+// --------
+*
+	+box-sizing(border-box)
+
+html
+	position: relative
+
+body
+	background: $color-bkg url(http://www.acusti.ca/images/bckg-texture.png)
+	color: $color-text
+
+blockquote
+	position: relative
+	padding: 0 1.5em 0 2em
+	margin: 1em 0
+
+	@media (max-width: $narrow-width)
+		padding-right: 1em
+		padding-left: 1.5em
+
+cite
+	margin-left: 1.9em
+	font-size: 0.8rem // 20 x 0.8 = 16
+	color: #666
+
+strong
+	font-weight: bolder
+
+code
+	padding: 0 0.35em
+	margin: 0 0.15em
+	text-shadow: 0 1px 1px white
+
+pre
+	> code
+		display: block
+		margin: 15px auto
+		width: 90%
+		padding: 11px 9px 11px 12px
+		+adjust-font-size-to(16px)
+
+article code p:last-child
+	margin-bottom: 0
+
+*
+	+selection
+		color: $color-text
+		background-color: $color-selection
+		text-shadow: none
+
+a
+	+selection
+		background-color: $color-accent-selection
+
+hr
+	margin: 2em 0
+	border: 0
+	@extend %horizontal-border
+
+
+// Tables
+// ------
+td,
+th
+	padding: 0.5em
+	border: 2px solid $color-bkg
+	background: rgba($color-bkg-code, 0.5)
+
+th
+	font-weight: 700
+	background: $color-bkg-code
+
+
+// Footnotes
+// ---------
+a[rel="footnote"]
+	display: inline-block
+	vertical-align: super
+	line-height: 1
+	font-size: 0.7rem
+	padding: 0 0.15rem
+
+.footnotes
+	+adjust-font-size-to($base-font-size - 2)
+	color: $color-text-muted
+
+
+// Featured list
+// -------------
+article .standout,
+.page--work .page > ul
+	width: 100%
+	margin: 0
+	text-align: left
+	padding: 0.5em 0 1em
+
+	@media (min-width: $medium-width + 150)
+		width: 110%
+		margin-left: -5%
+
+	@media (min-width: $total-width * 1.2 + 30)
+		width: 120%
+		margin-left: -10%
+
+	li
+		list-style: none
+		padding: 10px 12px
+		width: 31.75%
+		min-height: 60px
+		margin: 0 7px 11px 0
+		display: inline-block
+		vertical-align: top
+		background-color: rgba(black, 0.15)
+
+		> a:first-child,
+		.title
+			display: block
+
+		@media (min-width: $total-width + 100)
+			width: 32%
+
+		@media (max-width: $medium-width + 150)
+			width: 48%
+
+		@media (max-width: $medium-width - 120)
+			width: 47%
+
+		@media (max-width: $narrow-width)
+			width: 100%
+			background: none
+
+			> a:first-child,
+			> p > a:first-child,
+			.title
+				margin-left: -12px
+				padding-left: 12px
+
+article
+	.sites li
+		min-height: 160px
+
+		@media (max-width: $narrow-width)
+			min-height: 140px
+
+	.features li
+		min-height: 120px
+
+		@media (max-width: $narrow-width)
+			min-height: 120px
+
+
+// Image
+// -----
+article img
+	// When images are too wide, force them to fit (see responsive section for more)
+	max-width: 100%
+	// Override height to match resized width for correct aspect ratio
+	height: auto
+
+img
+	&.in-text
+		float: right
+		margin: 6px 0 2px 8px
+
+.oversized
+	position: relative
+	width: 124%
+	left: -12%
+
+	img
+		display: block
+		margin: 0 auto
+
+		@media (max-width: $narrow-width)
+			max-width: 100%
+			width: 100%
+			margin-left: 0
+
+.post__splash
+	left: 0
+	right: 0
+	overflow: hidden
+	max-height: 375px
+	// Compensate for extra padding on title
+	margin-bottom: -75px
+
+
+// Post
+// ----
+.post
+	+margin-trailer(2)
+
+.post__date
+	font-weight: 200
+	+adjust-font-size-to(17px, 1)
+	text-transform: uppercase
+	+margin-trailer(0.5)
+	color: $color-text
+	-webkit-font-smoothing: antialiased
+
+	.post &
+		+margin-leader(-0.5)
