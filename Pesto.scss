@@ -7,6 +7,8 @@
    Description: Attention to typography, easy on the eyes, mobile first, retina-ready
 */
 
+// Normalize
+@import "//cdn.jsdelivr.net/normalize/3.0.2/normalize.min.css";
 // Compass
 @import "compass";
 @import "compass/css3/user-interface";
@@ -137,47 +139,52 @@ h6 {
 	font-size: 0.75em;
 	margin: 2.33em 0;
 }
-// Custom link underline
-// ---------------------
+// Links
+// -----
 a {
 	color: $color-accent;
-	text-decoration: none;
-	// Underline via gradient background
-	background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
-	background-repeat: repeat-x;
-	background-size: 1px 1px;
-	background-position: 0 95%;
-	// Tweak position + thickness for high res (1.75x and up) displays
-	@media (-webkit-min-device-pixel-ratio: 1.75),
-	       (min-resolution: 168dpi) {
-		background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
-		background-position: 0 93%;
-	}
-	// Clear descendors from underline
-	text-shadow: 3px 0 white, 2px 0 white, 1px 0 white, -1px 0 white, -2px 0 white, -3px 0 white;
-	&:hover {
-		color: darken($color-accent, 11%);
-		background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
-	}
-	// Style selected links (or else text-shadow makes it look crazy ugly)
-	&,
-	> * {
-		@include selection {
-			background-color: lighten($color-accent, 25%);
-			color: $color-text-body;
-			text-shadow: none;
-		}
-	}
 }
-h1, h2, h3 {
+// Custom underline
+@media not print {
 	a {
-		background-size: 1px 2px;
+		text-decoration: none;
+		// Underline via gradient background
+		background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
+		background-repeat: repeat-x;
+		background-size: 1px 1px;
+		background-position: 0 95%;
+		// Tweak position + thickness for high res (1.75x and up) displays
 		@media (-webkit-min-device-pixel-ratio: 1.75),
 		       (min-resolution: 168dpi) {
+			background-image: linear-gradient(rgba($color-accent, 0.25) 0%, $color-accent 100%);
 			background-position: 0 93%;
-			background-image: linear-gradient($color-accent 0%, $color-accent 100%);
-			background-size: 1px 1px;
-			background-position: 0 93%;
+		}
+		// Clear descendors from underline
+		text-shadow: 3px 0 white, 2px 0 white, 1px 0 white, -1px 0 white, -2px 0 white, -3px 0 white;
+		&:hover {
+			color: darken($color-accent, 11%);
+			background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
+		}
+		// Style selected links (or else text-shadow makes it look crazy ugly)
+		&,
+		> * {
+			@include selection {
+				background-color: lighten($color-accent, 25%);
+				color: $color-text-body;
+				text-shadow: none;
+			}
+		}
+	}
+	h1, h2, h3 {
+		a {
+			background-size: 1px 2px;
+			@media (-webkit-min-device-pixel-ratio: 1.75),
+			       (min-resolution: 168dpi) {
+				background-position: 0 93%;
+				background-image: linear-gradient($color-accent 0%, $color-accent 100%);
+				background-size: 1px 1px;
+				background-position: 0 93%;
+			}
 		}
 	}
 }
@@ -396,7 +403,7 @@ caption{display:table-caption;font-weight:300;font-size:1.3em;text-transform:upp
 	font-style: italic;
 	color: $color-text-light;
 
-	@media (min-width: $medium-width) {
+	@media print, screen and (min-width: $medium-width) {
 		float: right;
 		width: 11em;
 		font-style: normal;
@@ -421,6 +428,8 @@ caption{display:table-caption;font-weight:300;font-size:1.3em;text-transform:upp
 		padding-left: 0;
 		padding-right: 0;
 		max-width: 100%;
+		// Prevent Chrome from tweaking text colors
+		-webkit-print-color-adjust: exact;
 	}
 	ul > li:before {
 		height: 0.325em;
